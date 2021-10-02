@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
+import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
 const axios = require('axios').default;
 
 // axios.get('/user?ID=12345')
@@ -17,14 +18,24 @@ const axios = require('axios').default;
 //   });
 
 function App() {
+  const [data, setData] = useState('Not Found');
   return (
     <div className="App">
       <header className="App-header">
-      <button onClick={() => {
-        fetchRandomData();
-      }}>
-  Activate Lasers
-</button>
+        <button onClick={() => {
+          fetchRandomData();
+        }}>
+          Activate Lasers
+        </button>
+        <BarcodeScannerComponent
+          width={500}
+          height={500}
+          onUpdate={(err, result) => {
+            if (result) setData(result.text);
+            else setData('Not Found');
+          }}
+        />
+        <p>{data}</p>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -35,7 +46,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-        
+
           Learn React
         </a>
       </header>
@@ -44,13 +55,14 @@ function App() {
 }
 const fetchRandomData = () => {
   return axios.get('https://randomuser.me/api')
-  .then(res => {
-    //sucess
-    console.log(res);
-  })
+    .then(res => {
+      //sucess
+      console.log(res);
+    })
     .catch(err => {
       console.error(err);
-    })};
+    });
+};
 
 
 
