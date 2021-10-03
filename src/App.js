@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
+import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 const axios = require('axios').default;
 
 // axios.get('/user?ID=12345')
