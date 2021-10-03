@@ -2,8 +2,8 @@ import React from 'react'
 import BarcodeReader from 'react-barcode-reader'
 import './App.css';
 import { useState } from 'react';
-import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
-//const axios = require('axios').default;
+import BarcodeScannerComponent from 'react-qr-barcode-scanner';
+const axios = require('axios').default;
 
 // axios.get('/user?ID=12345')
 //   .then(function (response) {
