@@ -3,6 +3,9 @@ import BarcodeReader from 'react-barcode-reader'
 import './App.css';
 import { useState } from 'react';
 import BarcodeScannerComponent from 'react-qr-barcode-scanner';
+
+import WebCam from './WebCam'
+
 const axios = require('axios').default;
 
 // axios.get('/user?ID=12345')
@@ -22,7 +25,7 @@ function App() {
   const [data, setData] = useState('Not Found');
   return (
     <div className="App">
-      <header className="App-header">
+
         <button onClick={() => {
           fetchRandomData();
         }}>
@@ -37,20 +40,9 @@ function App() {
           }}
         />
         <p>{data}</p>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
 
-          Learn React
-        </a>
-      </header>
+        <WebCam/>
+
     </div>
   );
 }
@@ -69,37 +61,3 @@ const fetchRandomData = () => {
 
 
 export default App;
-// import React, { Component } from 'react'
-// import BarcodeReader from 'react-barcode-reader'
-//
-// class Test extends Component {
-//   constructor(props){
-//     super(props)
-//     this.state = {
-//       result: 'No result',
-//     }
-//
-//     this.handleScan = this.handleScan.bind(this)
-//   }
-//   handleScan(data){
-//     this.setState({
-//       result: data,
-//     })
-//   }
-//   handleError(err){
-//     console.error(err)
-//   }
-//   render(){
-//
-//     return(
-//       <div>
-//         <BarcodeReader
-//           onError={this.handleError}
-//           onScan={this.handleScan}
-//           />
-//         <p>{this.state.result}</p>
-//       </div>
-//     )
-//   }
-// }
-// export default Test
